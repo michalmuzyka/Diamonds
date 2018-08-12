@@ -9,9 +9,8 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Pliki zasobów">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="DLL">
+      <UniqueIdentifier>{12684129-b301-4202-b45b-351e524b9f52}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,6 +18,21 @@
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Fps_counter.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture_manager.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Font_manager.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
@@ -29,5 +43,55 @@
     <ClCompile Include="Diamonds.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Fps_counter.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture_manager.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Font_manager.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\SFML-2.5.0\bin\openal32.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-audio-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-audio-d-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-graphics-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-graphics-d-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-network-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-network-d-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-system-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-system-d-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-window-2.dll">
+      <Filter>DLL</Filter>
+    </None>
+    <None Include="..\..\..\SFML-2.5.0\bin\sfml-window-d-2.dll">
+      <Filter>DLL</Filter>
+    </None>
   </ItemGroup>
 </Project>
