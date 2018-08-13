@@ -1,18 +1,33 @@
 #include "stdafx.h"
 #include "Animated_sprite.h"
-#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace di
 {
 
-    Animated_sprite::Animated_sprite(const double& step_time=sf::seconds(0.2).asMicroseconds(), const bool& paused=false, const bool& looped=true)
-        :animation(nullptr), texture(nullptr), frame_number(0), looped(looped), paused(paused), step_time(step_time)
+    Animated_sprite::Animated_sprite(const unsigned long long& step_time, const bool& paused, const bool& looped)
+        :animation(nullptr), texture(nullptr), frame_number(0), looped(looped), paused(paused), step_time(step_time), current_time(0)
     {
         
     }
 
-    void Animated_sprite::update(const double& delta_time) {
-        
+    void Animated_sprite::update(const unsigned long long& delta_time) {
+        if(!paused && animation){
+            current_time += delta_time;
+            if(delta_time+current_time >= step_time){
+                current_time = (delta_time + current_time) % step_time;
+
+                if (frame_number + 1 < animation->get_animation_length())
+                    ++frame_number;
+                else {
+                    frame_number = 0;
+
+                    if (!looped) {
+                        paused = true;
+                    }
+                }
+                set_frame(frame_number);
+            }
+        }
     }
 
     void Animated_sprite::play() {
@@ -42,6 +57,7 @@ namespace di
     void Animated_sprite::set_animation(std::shared_ptr<Animation> animation) {
         this->animation = animation;
         texture = animation->get_sheet();
+        sprite.setTexture(*texture);
         set_frame(0);
     }
 
@@ -53,15 +69,14 @@ namespace di
         looped = loop;
     }
 
-    void Animated_sprite::set_step_time(const double& time) {
+    void Animated_sprite::set_step_time(const unsigned long long& time) {
         step_time = time;
     }
 
     void Animated_sprite::draw(sf::RenderTarget& target, sf::RenderStates states) const {
         if (animation&&texture) {
             states.transform *= getTransform();
-            states.texture = *texture;
-            target.draw(sprite);
+            target.draw(sprite, states);
         }
     }
 }
