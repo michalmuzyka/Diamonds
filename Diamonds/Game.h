@@ -26,6 +26,9 @@ namespace di
         sf::Mouse mouse;
         sf::Cursor cursor;
 
+        std::chrono::time_point<std::chrono::steady_clock> last_frame_time;
+        double delta_time;
+
     };
 
 }

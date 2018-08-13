@@ -38,6 +38,18 @@
     <ClInclude Include="targetver.h">
       <Filter>Others</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="Animated_sprite.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Diamonds.cpp">
@@ -60,6 +72,18 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Others</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="Animated_sprite.cpp">
+      <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

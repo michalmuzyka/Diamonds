@@ -155,19 +155,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animated_sprite.h" />
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Font_manager.h" />
     <ClInclude Include="Fps_counter.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Texture_manager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animated_sprite.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Diamonds.cpp" />
     <ClCompile Include="Font_manager.cpp" />
     <ClCompile Include="Fps_counter.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="Texture_manager.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -176,6 +183,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\SFML-2.5.0\bin\openal32.dll" />

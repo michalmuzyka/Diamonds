@@ -11,12 +11,12 @@ namespace di
         sf::Text text;
         Fps_counter();
         void update();
-        const unsigned int getFPS() const;
+        unsigned int get_FPS() const;
 
     private:
-        unsigned int mFrame;
-        unsigned int mFps;
-        std::chrono::time_point<std::chrono::steady_clock> oldTime;
+        unsigned int frame;
+        unsigned int fps;
+        std::chrono::time_point<std::chrono::steady_clock> old_time{};
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     };

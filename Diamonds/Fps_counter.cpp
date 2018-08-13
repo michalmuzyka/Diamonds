@@ -6,24 +6,23 @@ namespace di
 {
 
     Fps_counter::Fps_counter()
-        : mFrame(0), mFps(0), oldTime(std::chrono::high_resolution_clock::now()){
-
+        : frame(0), fps(0), old_time(std::chrono::high_resolution_clock::now()){
         text.setFont(*di::Font_manager::instance()->get_default());
         text.setFillColor(sf::Color::Black);
     }
 
-    const unsigned Fps_counter::getFPS() const {
-        return mFps;
+    unsigned Fps_counter::get_FPS() const {
+        return fps;
     }
 
     void Fps_counter::update() {
-        if(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()-oldTime).count() >= 1.0f){
-            mFps = mFrame;
-            text.setString(std::to_string(getFPS()));
-            mFrame = 0;
-            oldTime = std::chrono::high_resolution_clock::now();
+        if(std::chrono::duration_cast<std::chrono::seconds>(std::chrono::high_resolution_clock::now()-old_time).count() >= 1.0f){
+            fps = frame;
+            text.setString(std::to_string(get_FPS()));
+            frame = 0;
+            old_time = std::chrono::high_resolution_clock::now();
         }
-        ++mFrame;
+        ++frame;
     }
 
     void Fps_counter::draw(sf::RenderTarget& target, sf::RenderStates states) const {
