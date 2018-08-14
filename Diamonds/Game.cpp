@@ -3,12 +3,14 @@
 #include "Animation.h"
 #include "Animated_sprite.h"
 #include <SFML/Graphics.hpp>
+#include "Animation_manager.h"
 
 namespace di
 {
 
     Game::Game()
-        :window(sf::VideoMode(1280, 720), "Diamonds"), s1(sf::seconds(0.1).asMicroseconds(), false, true){
+        :window(sf::VideoMode(1920, 1080), "Diamonds"), s1(sf::seconds(0.15).asMicroseconds(), false, true)
+    {
         window.setFramerateLimit(60);
         using namespace std::chrono;
         last_frame_time = high_resolution_clock::now();
@@ -20,12 +22,17 @@ namespace di
     }
 
     void Game::prepare() {
-        anim.set_sheet(di::Texture_manager::instance()->get("2.png"));
-        anim.add_frame(sf::IntRect(0, 0, 32, 32));
-        anim.add_frame(sf::IntRect(32, 0, 32, 32));
-        anim.add_frame(sf::IntRect(64, 0, 32, 32));
-        anim.add_frame(sf::IntRect(96, 0, 32, 32));
-        s1.set_animation(std::make_shared<Animation>(anim));
+        di::Animation_manager::instance()->get("a1")->set_sheet(di::Texture_manager::instance()->get("2_s.png"));
+        di::Animation_manager::instance()->get("a1")->generate_frames_from_line(sf::Vector2u(100,100));
+        s1.set_animation(di::Animation_manager::instance()->get("a1"));
+
+        /*
+        s2.set_animation(std::make_shared<Animation>(anim1));
+        s3.set_animation(std::make_shared<Animation>(anim2));
+        s3.move(228, 100);
+        s2.move(164, 100);
+        */
+        s1.scale(0.5, 0.5);
         s1.move(100, 100);
     }
 
@@ -38,10 +45,12 @@ namespace di
     }
 
     void Game::draw() {
-        window.clear(sf::Color::Red);
+        window.clear(sf::Color::White);
 
         window.draw(fps);
         window.draw(s1);
+        window.draw(s2);
+        window.draw(s3);
 
         window.display();
     }
@@ -54,13 +63,20 @@ namespace di
         last_frame_time = high_resolution_clock::now();
 
         s1.update(delta_time);
+        s2.update(delta_time);
+        s3.update(delta_time);
     }
 
     void Game::events() {
-        sf::Event event;
+        sf::Event event{};
         while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+            switch(event.type){
+            case sf::Event::Closed: {
                 window.close();
+                break;
+            }
+            default: break;
+            }
         }
     }
 

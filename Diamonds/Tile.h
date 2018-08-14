@@ -7,7 +7,10 @@ namespace di
     {
     public:
         Tile();
+        explicit Tile(const unsigned &type);
         ~Tile();
+    private:
+        unsigned type;
     };
 
 }

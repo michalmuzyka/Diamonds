@@ -23,6 +23,8 @@ namespace di
         void pause();
         void play();
 
+        sf::FloatRect getLocalBounds() const;
+
         std::shared_ptr<di::Animation> get_animation() const;
         double get_step_time() const;
         bool is_paused() const;

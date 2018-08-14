@@ -30,8 +30,8 @@ namespace di
         std::chrono::time_point<std::chrono::steady_clock> last_frame_time;
         unsigned long long delta_time;
         Animated_sprite s1;
-        Animation anim;
-
+        Animated_sprite s2;
+        Animated_sprite s3;
     };
 
 }

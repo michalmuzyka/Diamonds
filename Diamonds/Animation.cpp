@@ -17,6 +17,16 @@ namespace di
         frames.push_back(frame);
     }
 
+    void Animation::generate_frames_from_line(const sf::Vector2u& size) {
+        unsigned count_of_frames = 0;
+        const auto max_size = sheet->getSize();
+        for(unsigned i=0; i!=max_size.x/size.x; ++i){
+            add_frame(sf::IntRect(i*size.x, 0, size.x, size.y));
+        }
+    }
+
+
+
     std::size_t Animation::get_animation_length() const {
         return frames.size();
     }

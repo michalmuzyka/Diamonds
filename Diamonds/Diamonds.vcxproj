@@ -157,10 +157,12 @@
   <ItemGroup>
     <ClInclude Include="Animated_sprite.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Animation_manager.h" />
     <ClInclude Include="Font_manager.h" />
     <ClInclude Include="Fps_counter.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Random_int.h" />
     <ClInclude Include="Texture_manager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="stdafx.h" />
@@ -170,11 +172,13 @@
   <ItemGroup>
     <ClCompile Include="Animated_sprite.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Animation_manager.cpp" />
     <ClCompile Include="Diamonds.cpp" />
     <ClCompile Include="Font_manager.cpp" />
     <ClCompile Include="Fps_counter.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Random_int.cpp" />
     <ClCompile Include="Texture_manager.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -197,6 +201,9 @@
     <None Include="..\..\..\SFML-2.5.0\bin\sfml-system-d-2.dll" />
     <None Include="..\..\..\SFML-2.5.0\bin\sfml-window-2.dll" />
     <None Include="..\..\..\SFML-2.5.0\bin\sfml-window-d-2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="data\font\default.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
