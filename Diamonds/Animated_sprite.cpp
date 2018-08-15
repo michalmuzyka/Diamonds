@@ -73,12 +73,11 @@ namespace di
         step_time = time;
     }
 
-    void Animated_sprite::scale_sprite(float factorX, float factorY) {
-        sprite.setScale(factorX, factorY);
-    }
 
     sf::FloatRect Animated_sprite::getBounds() const {
-        return sprite.getGlobalBounds();
+        auto &bounds = sprite.getGlobalBounds();
+        auto &pos = getPosition();
+        return sf::FloatRect(pos.x, pos.y, bounds.width, bounds.height);
     }
 
 

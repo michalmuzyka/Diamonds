@@ -10,9 +10,8 @@ namespace di
     public:
         Map(const unsigned x, const unsigned y);
 
-        void scale(const float x,const float y);
         void init();
-        void update(const unsigned long long&delta_time);
+        void update(const unsigned long long&delta_time, const sf::Vector2i& mouse_pos);
     private:
         unsigned x, y;
         sf::Vector2f tile_size;

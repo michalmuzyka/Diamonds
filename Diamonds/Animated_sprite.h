@@ -23,8 +23,6 @@ namespace di
         void pause();
         void play();
 
-        void scale_sprite(float factorX, float factorY);
-
         sf::FloatRect getBounds() const;
 
         std::shared_ptr<di::Animation> get_animation() const;

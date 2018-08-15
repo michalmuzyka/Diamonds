@@ -14,18 +14,9 @@ namespace di
             map.emplace_back();
             for (int z = 0; z != y; ++z) {
                 map[i].emplace_back();
-                map[i][z].sprite.setPosition(z * 100, i * 100);
+                map[i][z].set_position(z * 100, i * 100);
             }
         }
-
-        const auto bounds = map[0][0].sprite.getBounds();
-        tile_size = sf::Vector2f(bounds.width, bounds.height);
-    }
-
-    void Map::scale(const float x, const float y) {
-        for (auto &m : map)
-            for (auto &s : m)
-                s.sprite.scale(x,y);
 
         const auto bounds = map[0][0].sprite.getBounds();
         tile_size = sf::Vector2f(bounds.width, bounds.height);
@@ -38,10 +29,11 @@ namespace di
                 target.draw(s);
     }
 
-    void Map::update(const unsigned long long& delta_time) {
+    void Map::update(const unsigned long long& delta_time, const sf::Vector2i& mouse_pos) {
         for (auto &m : map)
-            for (auto &s : m)
-                s.update(delta_time);
+            for (auto &s : m) {
+                s.update(delta_time, mouse_pos);
+            }
     }
 
 }

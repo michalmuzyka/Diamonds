@@ -14,7 +14,6 @@ namespace di
     {
     public:
         Game();
-        ~Game();
         void play();
         void prepare();
     private:
@@ -22,11 +21,10 @@ namespace di
         void update();
         void events();
 
-        di::Fps_counter fps;
-
         sf::RenderWindow window;
-        sf::Mouse mouse;
         sf::Cursor cursor;
+        sf::Image mouse_image;
+        std::shared_ptr<sf::Mouse> mouse;
 
         std::chrono::time_point<std::chrono::steady_clock> last_frame_time;
         unsigned long long delta_time;
