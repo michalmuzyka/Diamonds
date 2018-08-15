@@ -8,7 +8,7 @@ namespace di
     class Random_int
     {
     public:
-        static int get(int minRange, int maxRange);
+        static int get(int min, int max);
     };
 
 }

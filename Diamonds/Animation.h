@@ -9,7 +9,6 @@ namespace di
     {
     public:
         Animation();
-        ~Animation();
         void add_frame(const sf::IntRect&);
         void generate_frames_from_line(const sf::Vector2u&);
         void set_sheet(std::shared_ptr<sf::Texture>);

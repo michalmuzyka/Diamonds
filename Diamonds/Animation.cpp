@@ -8,11 +8,6 @@ namespace di
     {
     }
 
-
-    Animation::~Animation()
-    {
-    }
-
     void Animation::add_frame(const sf::IntRect&frame){
         frames.push_back(frame);
     }
@@ -24,7 +19,6 @@ namespace di
             add_frame(sf::IntRect(i*size.x, 0, size.x, size.y));
         }
     }
-
 
 
     std::size_t Animation::get_animation_length() const {

@@ -5,6 +5,7 @@
 #include "Settings.h"
 #include "Fps_counter.h"
 #include "Animated_sprite.h"
+#include "Map.h"
 
 namespace di
 {
@@ -29,9 +30,8 @@ namespace di
 
         std::chrono::time_point<std::chrono::steady_clock> last_frame_time;
         unsigned long long delta_time;
-        Animated_sprite s1;
-        Animated_sprite s2;
-        Animated_sprite s3;
+
+        Map map;
     };
 
 }
