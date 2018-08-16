@@ -20,6 +20,8 @@ namespace di
         mouse_image.loadFromFile("data/textures/mouse.png");
         cursor.loadFromPixels(mouse_image.getPixelsPtr(), mouse_image.getSize(), sf::Vector2u(2, 2));
         window.setMouseCursor(cursor);
+
+        Settings::instance()->set("update_time", "500000");
     }
 
     void Game::prepare() {

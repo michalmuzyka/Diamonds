@@ -75,8 +75,8 @@ namespace di
 
 
     sf::FloatRect Animated_sprite::getBounds() const {
-        auto &bounds = sprite.getGlobalBounds();
-        auto &pos = getPosition();
+        const auto bounds = sprite.getGlobalBounds();
+        const auto pos = getPosition();
         return sf::FloatRect(pos.x, pos.y, bounds.width, bounds.height);
     }
 

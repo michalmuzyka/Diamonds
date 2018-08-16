@@ -13,6 +13,9 @@ namespace di
         std::string get_string(const std::string &);
         int get_int(const std::string &);
         float get_float(const std::string &);
+        double get_double(const std::string &);
+        unsigned long long get_ull(const std::string &);
+        long long get_ll(const std::string &);
         static Settings* instance();
     private:
         std::unordered_map<std::string, std::string> settings;
