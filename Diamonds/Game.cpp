@@ -21,7 +21,8 @@ namespace di
         cursor.loadFromPixels(mouse_image.getPixelsPtr(), mouse_image.getSize(), sf::Vector2u(2, 2));
         window.setMouseCursor(cursor);
 
-        Settings::instance()->set("update_time", "500000");
+        Settings::instance()->set("update_time", "700000");
+        Settings::instance()->set("swap_animation_offset", "2500");
     }
 
     void Game::prepare() {

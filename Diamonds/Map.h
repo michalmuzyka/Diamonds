@@ -16,6 +16,7 @@ namespace di
         unsigned x, y;
         sf::Vector2f tile_size;
         std::vector<std::vector<Tile>> map;
+        unsigned long long time_offset;
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     };
