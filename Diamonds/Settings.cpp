@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Settings.h"
 #include <string>
+#include <iostream>
 
 namespace di
 {
@@ -9,9 +10,30 @@ namespace di
 
     }
 
-    void Settings::set(const std::string &key, const std::string &value) {
+
+    void Settings::set(const std::string&key, const std::string& value)
+    {
         settings[key] = value;
     }
+    void Settings::set(const std::string&key, const int& value){
+        settings[key] = std::to_string(value);
+    }
+    void Settings::set(const std::string&key, const double&value){
+        settings[key] = std::to_string(value);
+    }
+    void Settings::set(const std::string&key, const float&value){
+        settings[key] = std::to_string(value);
+    }
+    void Settings::set(const std::string&key, const unsigned&value){
+        settings[key] = std::to_string(value);
+    }
+    void Settings::set(const std::string&key, const long long&value){
+        settings[key] = std::to_string(value);
+    }
+    void Settings::set(const std::string&key, const unsigned long long&value){
+        settings[key] = std::to_string(value);
+    }
+
 
     std::string Settings::get_string(const std::string &key) {
         if(settings.find(key)==settings.end()){

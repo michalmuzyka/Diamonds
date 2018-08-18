@@ -10,7 +10,7 @@ namespace di
 {
 
     Tile::Tile(const int &x, const int &y)
-    :type(di::Random_int::get(1,6)), hovered(false), clicked(false), time_offset(0), x(x), y(y){
+    :type(di::Random_int::get(1,6)), hovered(false), clicked(false), swap_time_offset(0), x(x), y(y){
         sprite.set_animation(Animation_manager::instance()->get(std::to_string(type)+"_s.png"));
         border.setTexture(*Texture_manager::instance()->get("border.png"));
         hover_border.setTexture(*Texture_manager::instance()->get("border-hover.png"));
@@ -25,7 +25,7 @@ namespace di
 
     void Tile::update(const unsigned long long& delta_time, const sf::Vector2i& mouse_pos) {
         sprite.update(delta_time);
-        time_offset += delta_time;
+        swap_time_offset += delta_time;
        
         hover(mouse_pos);
         click();
@@ -52,12 +52,12 @@ namespace di
         if (!Settings::instance()->get_int("block_input")) {
             if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left)) {
                 if (hovered) {
-                    if (settings_update_time < time_offset) {
-                        time_offset %= settings_update_time;
+                    if (settings_update_time < swap_time_offset) {
+                        swap_time_offset %= settings_update_time;
                         if (clicked) {
                             if (Settings::instance()->get_int("first_clicked")) {
                                 if (Settings::instance()->get_int("first_x") == x && Settings::instance()->get_int("first_y") == y) {
-                                    Settings::instance()->set("first_clicked", "0");
+                                    Settings::instance()->set("first_clicked", 0);
                                     clicked = false;
                                 }
                             }
@@ -68,16 +68,16 @@ namespace di
                                 int f_y = Settings::instance()->get_int("first_y");
 
                                 if ((abs(f_x - x) == 1 && abs(f_y - y) == 0) || (abs(f_x - x) == 0 && abs(f_y - y) == 1)) {
-                                    Settings::instance()->set("second_clicked", "1");
-                                    Settings::instance()->set("second_x", std::to_string(x));
-                                    Settings::instance()->set("second_y", std::to_string(y));
+                                    Settings::instance()->set("second_clicked", 1);
+                                    Settings::instance()->set("second_x", x);
+                                    Settings::instance()->set("second_y", y);
                                     clicked = true;
                                 }
                             }
                             else {
-                                Settings::instance()->set("first_clicked", "1");
-                                Settings::instance()->set("first_x", std::to_string(x));
-                                Settings::instance()->set("first_y", std::to_string(y));
+                                Settings::instance()->set("first_clicked", 1);
+                                Settings::instance()->set("first_x", x);
+                                Settings::instance()->set("first_y", y);
                                 clicked = true;
                             }
                         }
@@ -89,6 +89,16 @@ namespace di
 
     unsigned Tile::get_type() const {
         return type;
+    }
+
+    void Tile::set_random_type() {
+        type = di::Random_int::get(1, 6);
+        sprite.set_animation(Animation_manager::instance()->get(std::to_string(type) + "_s.png"));
+    }
+
+    void Tile::set_type(const unsigned &type){
+        this->type = type;
+        sprite.set_animation(Animation_manager::instance()->get(std::to_string(type) + "_s.png"));
     }
 
 

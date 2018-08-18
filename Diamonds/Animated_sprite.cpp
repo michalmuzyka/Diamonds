@@ -5,7 +5,7 @@ namespace di
 {
 
     Animated_sprite::Animated_sprite(const unsigned long long& step_time, const bool& paused, const bool& looped)
-        :animation(nullptr), texture(nullptr), frame_number(0), looped(looped), paused(paused), step_time(step_time), current_time(0)
+        :animation(nullptr), texture(nullptr), frame_number(0), looped(looped), paused(paused), step_time(step_time), current_time(0), ended(0)
     {
         
     }
@@ -22,6 +22,7 @@ namespace di
                     frame_number = 0;
 
                     if (!looped) {
+                        ended = true;
                         paused = true;
                     }
                 }
@@ -32,6 +33,7 @@ namespace di
 
     void Animated_sprite::play() {
         paused = false;
+        ended = false;
     }
 
     bool Animated_sprite::is_looped() const {
@@ -41,6 +43,11 @@ namespace di
     bool Animated_sprite::is_paused() const {
         return paused;
     }
+
+    bool Animated_sprite::is_ended() const {
+        return ended;
+    }
+
 
     void Animated_sprite::pause() {
         paused = true;

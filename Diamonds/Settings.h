@@ -9,6 +9,12 @@ namespace di
         Settings(const Settings&) = delete;
         Settings& operator=(const Settings&) = delete;
 
+        void set(const std::string &, const int&);
+        void set(const std::string& key, const double& value);
+        void set(const std::string& key, const float& value);
+        void set(const std::string& key, const unsigned& value);
+        void set(const std::string& key, const long long& value);
+        void set(const std::string& key, const unsigned long long& value);
         void set(const std::string &, const std::string &);
         std::string get_string(const std::string &);
         int get_int(const std::string &);

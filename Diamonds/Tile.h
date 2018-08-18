@@ -21,13 +21,15 @@ namespace di
         bool is_clicked() const;
         void change_type(Tile*tile);
         unsigned get_type() const;
+        void set_random_type();
+        void set_type(const unsigned&);
         Animated_sprite sprite;
     private:
         sf::Sprite hover_border, border;
         unsigned type;
         bool hovered;
         bool clicked;
-        unsigned long long time_offset;
+        unsigned long long swap_time_offset;
         int x, y;
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

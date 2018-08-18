@@ -29,6 +29,7 @@ namespace di
         double get_step_time() const;
         bool is_paused() const;
         bool is_looped() const;
+        bool is_ended() const;
 
     private:
         std::shared_ptr<di::Animation> animation;
@@ -38,6 +39,7 @@ namespace di
         std::size_t frame_number;
         bool looped;
         bool paused;
+        bool ended;
 
         unsigned long long step_time;
         unsigned long long current_time;
