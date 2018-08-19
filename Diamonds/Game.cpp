@@ -21,6 +21,10 @@ namespace di
         cursor.loadFromPixels(mouse_image.getPixelsPtr(), mouse_image.getSize(), sf::Vector2u(2, 2));
         window.setMouseCursor(cursor);
 
+        sf::Image icon;
+        icon.loadFromFile("data/textures/icon.png");
+        window.setIcon(64, 64, icon.getPixelsPtr());
+
         Settings::instance()->set("update_time", 700000);
         Settings::instance()->set("swap_animation_offset", 2500);
     }
