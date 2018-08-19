@@ -19,7 +19,6 @@ namespace di
         unsigned long long swap_time_offset, solve_time_offset;
         unsigned x_offset, y_offset;
 
-
         bool check_map();
         void make_map_without_completed_puzzle();
         void prepare_swap_animation();

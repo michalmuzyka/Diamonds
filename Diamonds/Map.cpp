@@ -112,6 +112,13 @@ namespace di
                 s.update(delta_time, mouse_pos);
             }
 
+        if(Settings::instance()->get_int("unclick")){
+            const int x = Settings::instance()->get_int("unclick_x");
+            const int y = Settings::instance()->get_int("unclick_y");
+            map[y][x].unclick();
+            Settings::instance()->set("unclick", 0);
+        }
+
         if(Settings::instance()->get_int("first_clicked")&& Settings::instance()->get_int("second_clicked")){
             prepare_swap_animation();
         }
@@ -244,7 +251,7 @@ namespace di
             const int y = Settings::instance()->get_int("horizontal_y");
             const unsigned count = Settings::instance()->get_int("horizontal_count");
             Settings::instance()->set("update_points", 1);
-            Settings::instance()->add("points", (count+1) * 10);
+            Settings::instance()->add("points", (count+1 + (count -2)*(count - 2)) * 10);
             for (int i = y; i != -1; --i) {
                 for (int s = 0; s <= count; ++s) {
                     if (i != 0) {
@@ -266,7 +273,7 @@ namespace di
             const int y = Settings::instance()->get_int("vertical_y");
             const int count = Settings::instance()->get_int("vertical_count") + 1;
             Settings::instance()->set("update_points", 1);
-            Settings::instance()->add("points", count * 10);
+            Settings::instance()->add("points", (count+(count-3)*(count - 3))*10);
 
             for (int i = y; i != -1; --i) {
                 if (i - count >= 0) {

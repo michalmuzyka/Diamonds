@@ -72,6 +72,13 @@ namespace di
                                     Settings::instance()->set("second_x", x);
                                     Settings::instance()->set("second_y", y);
                                     clicked = true;
+                                }else{
+                                    clicked = true;
+                                    Settings::instance()->set("first_x", x);
+                                    Settings::instance()->set("first_y", y);
+                                    Settings::instance()->set("unclick", 1);
+                                    Settings::instance()->set("unclick_x", f_x);
+                                    Settings::instance()->set("unclick_y", f_y);
                                 }
                             }
                             else {
