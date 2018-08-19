@@ -1,4 +1,4 @@
 # Diamonds
-Game in Candy-crush style written in C++ and SFML.
+Game in a Candy-Crush type written in C++ and SFML.
 
 ![Image](thumbnail.gif)
