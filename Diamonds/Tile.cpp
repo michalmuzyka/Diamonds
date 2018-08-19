@@ -13,14 +13,14 @@ namespace di
     :type(di::Random_int::get(1,6)), hovered(false), clicked(false), swap_time_offset(0), number_of_tiles_x(x), number_of_tiles_y(y){
         sprite.set_animation(Animation_manager::instance()->get(std::to_string(type)+"_s.png"));
         border.setTexture(*Texture_manager::instance()->get("border.png"));
-        hover_border.setTexture(*Texture_manager::instance()->get("border-hover.png"));
+        hover_sprite.setTexture(*Texture_manager::instance()->get("border-hover.png"));
     }
 
     Tile::Tile(const unsigned& type, const int &x, const int &y)
     :type(type), hovered(false), clicked(false),number_of_tiles_x(x), number_of_tiles_y(y){
         sprite.set_animation(Animation_manager::instance()->get(std::to_string(type) + "_s.png"));
         border.setTexture(*Texture_manager::instance()->get("border.png"));
-        hover_border.setTexture(*Texture_manager::instance()->get("border-hover.png"));
+        hover_sprite.setTexture(*Texture_manager::instance()->get("border-hover.png"));
     }
 
     void Tile::update(const unsigned long long& delta_time, const sf::Vector2i& mouse_pos) {
@@ -108,6 +108,13 @@ namespace di
         sprite.set_animation(Animation_manager::instance()->get(std::to_string(type) + "_s.png"));
     }
 
+    sf::FloatRect Tile::get_sprite_bounds() const {
+        return sprite.getBounds();
+    }
+
+    void Tile::move_sprite(const float& x, const float& y) {
+        sprite.move(x, y);
+    }
 
     void Tile::unclick() {
         clicked = false;
@@ -120,7 +127,7 @@ namespace di
     void Tile::set_position(float x, float y) {
         sprite.setPosition(x, y);
         border.setPosition(x, y);
-        hover_border.setPosition(x, y);
+        hover_sprite.setPosition(x, y);
     }
 
     void Tile::set_sprite_position(float x, float y) {
@@ -136,7 +143,7 @@ namespace di
         if (clicked)
             target.draw(border);
         if (hovered && !Settings::instance()->get_int("block_input"))
-            target.draw(hover_border);
+            target.draw(hover_sprite);
     }
 
 }

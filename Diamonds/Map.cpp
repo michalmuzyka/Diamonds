@@ -32,7 +32,7 @@ namespace di
 
         make_map_without_completed_puzzle();
 
-        const auto bounds = map[0][0].sprite.getBounds();
+        const auto bounds = map[0][0].get_sprite_bounds();
         tile_size = sf::Vector2f(bounds.width, bounds.height);
     }
 
@@ -236,8 +236,8 @@ namespace di
         }
         else {
             if (swap_time_offset > swap_animation_offset) {
-                map[f_y][f_x].sprite.move((f_x - s_x) * 10, (f_y - s_y) * 10);
-                map[s_y][s_x].sprite.move((s_x - f_x) * 10, (s_y - f_y) * 10);
+                map[f_y][f_x].move_sprite((f_x - s_x) * 10, (f_y - s_y) * 10);
+                map[s_y][s_x].move_sprite((s_x - f_x) * 10, (s_y - f_y) * 10);
                 swap_time_offset %= swap_animation_offset;
             }
             swap_time_offset += delta_time;
@@ -256,7 +256,7 @@ namespace di
                     else {
                         map[0][horizontal_x - s].set_random_type();
                     }
-                    map[i][horizontal_x - s].sprite.move(0,-100);
+                    map[i][horizontal_x - s].move_sprite(0,-100);
                 }
             }
             Settings::instance()->set("block_input", 1);
@@ -276,7 +276,7 @@ namespace di
                 else {
                     map[i][vertical_x].set_random_type();
                 }
-                map[i][vertical_x].sprite.move(0,-100 * vertical_count);
+                map[i][vertical_x].move_sprite(0,-100 * vertical_count);
             }
 
             Settings::instance()->set("block_input", 1);
@@ -299,7 +299,7 @@ namespace di
             if (solve_time_offset > solve_animation_offset) {
                 for (int i = horizontal_y; i != -1; --i) {
                     for (int s = 0; s <= horizontal_count; ++s) {
-                        map[i][horizontal_x - s].sprite.move(0, 10);
+                        map[i][horizontal_x - s].move_sprite(0, 10);
                     }
                 }
                 solve_time_offset %= solve_animation_offset;
@@ -317,7 +317,7 @@ namespace di
             }
             if (solve_time_offset > solve_animation_offset) {
                 for (int i = vertical_y; i != -1; --i) {
-                    map[i][vertical_x].sprite.move(0, 10);
+                    map[i][vertical_x].move_sprite(0, 10);
                 }
                 solve_time_offset %= solve_animation_offset;
             }

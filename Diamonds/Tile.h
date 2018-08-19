@@ -23,9 +23,11 @@ namespace di
         unsigned get_type() const;
         void set_random_type();
         void set_type(const unsigned&);
-        Animated_sprite sprite;
+        sf::FloatRect get_sprite_bounds() const;
+        void move_sprite(const float &x,const float &y);
     private:
-        sf::Sprite hover_border, border;
+        Animated_sprite sprite;
+        sf::Sprite hover_sprite, border;
         unsigned type;
         bool hovered;
         bool clicked;
