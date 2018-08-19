@@ -8,15 +8,18 @@ namespace di
     class Map :public sf::Drawable
     {
     public:
-        Map(const unsigned x, const unsigned y);
+        Map();
 
-        void init();
+        void init(const unsigned x, const unsigned y);
         void update(const unsigned long long&delta_time, const sf::Vector2i& mouse_pos);
     private:
         unsigned x, y;
         sf::Vector2f tile_size;
         std::vector<std::vector<Tile>> map;
-        unsigned long long swap_time_offset;
+        unsigned long long swap_time_offset, solve_time_offset;
+        unsigned x_offset, y_offset;
+
+
         bool check_map();
         void make_map_without_completed_puzzle();
         void prepare_swap_animation();

@@ -7,18 +7,27 @@
 namespace di
 {
 
-    Map::Map(const unsigned x, const unsigned y)
-    :x(x), y(y), swap_time_offset(0){
+    Map::Map()
+    :x(0), y(0), swap_time_offset(0), solve_time_offset(0), x_offset(0), y_offset(0){
       
     }
 
-    void Map::init() {
+    void Map::init(const unsigned x, const unsigned y){
+        this->x = x;
+        this->y = y;
+
+        x_offset = (Settings::instance()->get_int("screen_width")-x*100)/2;
+        y_offset = (Settings::instance()->get_int("screen_height")-y*100)/2;
+        Settings::instance()->set("x_offset", x_offset);
+        Settings::instance()->set("y_offset", y_offset);
+        Settings::instance()->set("points", 0);
+
         for (int i = 0; i != y; ++i) {
             map.emplace_back();
             for (int z = 0; z != x; ++z) {
                 
                 map[i].emplace_back(z,i);
-                map[i][z].set_position(z * 100, i * 100);
+                map[i][z].set_position(x_offset+z * 100, y_offset+ i * 100);
             }
         }
 
@@ -200,8 +209,8 @@ namespace di
 
         map[f_y][f_x].change_type(&map[s_y][s_x]);
 
-        map[f_y][f_x].set_sprite_position(s_x * 100, s_y * 100);
-        map[s_y][s_x].set_sprite_position(f_x * 100, f_y * 100);
+        map[f_y][f_x].set_sprite_position(x_offset + s_x * 100, y_offset + s_y * 100);
+        map[s_y][s_x].set_sprite_position(x_offset + f_x * 100, y_offset + f_y * 100);
 
         Settings::instance()->set("in_swap_animation", 1);
         Settings::instance()->set("block_input", 1);
@@ -214,7 +223,7 @@ namespace di
         const int s_x = Settings::instance()->get_int("second_x");
         const int s_y = Settings::instance()->get_int("second_y");
 
-        if (map[f_y][f_x].get_sprite_position() == sf::Vector2f(f_x * 100, f_y * 100)) {
+        if (map[f_y][f_x].get_sprite_position() == sf::Vector2f(x_offset + f_x * 100, y_offset + f_y * 100)) {
             Settings::instance()->set("in_swap_animation", 0);
             Settings::instance()->set("block_input", 0);
             swap_time_offset = 0;
@@ -234,7 +243,8 @@ namespace di
             const int x = Settings::instance()->get_int("horizontal_x");
             const int y = Settings::instance()->get_int("horizontal_y");
             const unsigned count = Settings::instance()->get_int("horizontal_count");
-
+            Settings::instance()->set("update_points", 1);
+            Settings::instance()->add("points", (count+1) * 10);
             for (int i = y; i != -1; --i) {
                 for (int s = 0; s <= count; ++s) {
                     if (i != 0) {
@@ -255,6 +265,8 @@ namespace di
             const int x = Settings::instance()->get_int("vertical_x");
             const int y = Settings::instance()->get_int("vertical_y");
             const int count = Settings::instance()->get_int("vertical_count") + 1;
+            Settings::instance()->set("update_points", 1);
+            Settings::instance()->add("points", count * 10);
 
             for (int i = y; i != -1; --i) {
                 if (i - count >= 0) {
@@ -274,40 +286,48 @@ namespace di
     }
 
     void Map::update_solve_animation(const unsigned long long& delta_time) {
+        const unsigned long long solve_animation_offset = Settings::instance()->get_ull("solve_animation_offset");
         if(Settings::instance()->get_int("horizontal_animation")){
             const int x = Settings::instance()->get_int("horizontal_x");
             const int y = Settings::instance()->get_int("horizontal_y");
             const unsigned count = Settings::instance()->get_int("horizontal_count");
 
-            if (map[y][x].get_sprite_position() == sf::Vector2f(x * 100, y * 100)){
+            if (map[y][x].get_sprite_position() == sf::Vector2f(x_offset + x * 100, y_offset + y * 100)){
                 Settings::instance()->set("block_input", 0);
                 Settings::instance()->set("in_solve_animation", 0);
                 Settings::instance()->set("horizontal_animation", 0);
+                solve_time_offset = 0;
                 return;
             }
-
-            for (int i = y; i != -1; --i) {
-                for (int s = 0; s <= count; ++s) {
-                    map[i][x - s].sprite.move(0, 10);
+            if (solve_time_offset > solve_animation_offset) {
+                for (int i = y; i != -1; --i) {
+                    for (int s = 0; s <= count; ++s) {
+                        map[i][x - s].sprite.move(0, 10);
+                    }
                 }
+                solve_time_offset %= solve_animation_offset;
             }
-
+            solve_time_offset += delta_time;
         }
         if(Settings::instance()->get_int("vertical_animation")){
             const int x = Settings::instance()->get_int("vertical_x");
             const int y = Settings::instance()->get_int("vertical_y");
             const int count = Settings::instance()->get_int("vertical_count") + 1;
 
-            if (map[y][x].get_sprite_position() == sf::Vector2f(x * 100, y * 100)) {
+            if (map[y][x].get_sprite_position() == sf::Vector2f(x_offset + x * 100, y_offset + y * 100)) {
                 Settings::instance()->set("block_input", 0);
                 Settings::instance()->set("in_solve_animation", 0);
                 Settings::instance()->set("vertical_animation", 0);
+                solve_time_offset = 0;
                 return;
             }
-
-            for (int i = y; i != -1; --i) {
-                map[i][x].sprite.move(0, 10);
+            if (solve_time_offset > solve_animation_offset) {
+                for (int i = y; i != -1; --i) {
+                    map[i][x].sprite.move(0, 10);
+                }
+                solve_time_offset %= solve_animation_offset;
             }
+            solve_time_offset += delta_time;
         }
     }
 

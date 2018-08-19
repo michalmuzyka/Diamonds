@@ -15,6 +15,7 @@ namespace di
         void set(const std::string& key, const unsigned& value);
         void set(const std::string& key, const long long& value);
         void set(const std::string& key, const unsigned long long& value);
+        void add(const std::string& key, const int& value);
         void set(const std::string &, const std::string &);
         std::string get_string(const std::string &);
         int get_int(const std::string &);

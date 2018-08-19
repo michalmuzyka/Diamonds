@@ -6,13 +6,12 @@
 namespace di
 {
 
-    Settings::Settings(){
+    Settings::Settings()
+    {
 
     }
 
-
-    void Settings::set(const std::string&key, const std::string& value)
-    {
+    void Settings::set(const std::string&key, const std::string& value){
         settings[key] = value;
     }
     void Settings::set(const std::string&key, const int& value){
@@ -34,6 +33,9 @@ namespace di
         settings[key] = std::to_string(value);
     }
 
+    void Settings::add(const std::string&key, const int&value) {
+        settings[key] = std::to_string(std::stoi(settings[key]) + value);
+    }
 
     std::string Settings::get_string(const std::string &key) {
         if(settings.find(key)==settings.end()){

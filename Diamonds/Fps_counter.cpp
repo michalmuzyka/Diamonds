@@ -6,9 +6,10 @@ namespace di
 {
 
     Fps_counter::Fps_counter()
-        : frame(0), fps(0), old_time(std::chrono::high_resolution_clock::now()){
-        text.setFont(*di::Font_manager::instance()->get_default());
-        text.setFillColor(sf::Color::Black);
+        :frame(0), fps(0), old_time(std::chrono::high_resolution_clock::now()){
+        text.setFont(*di::Font_manager::instance()->get("neon2.ttf"));
+        text.setCharacterSize(60); 
+        text.setFillColor(sf::Color::Blue);
     }
 
     unsigned Fps_counter::get_FPS() const {
