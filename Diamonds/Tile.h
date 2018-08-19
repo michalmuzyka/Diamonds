@@ -30,7 +30,7 @@ namespace di
         bool hovered;
         bool clicked;
         unsigned long long swap_time_offset;
-        int x, y;
+        int number_of_tiles_x, number_of_tiles_y;
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     };

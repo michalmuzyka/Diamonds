@@ -32,7 +32,6 @@ namespace di
     void Settings::set(const std::string&key, const unsigned long long&value){
         settings[key] = std::to_string(value);
     }
-
     void Settings::add(const std::string&key, const int&value) {
         settings[key] = std::to_string(std::stoi(settings[key]) + value);
     }

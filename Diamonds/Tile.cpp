@@ -10,14 +10,14 @@ namespace di
 {
 
     Tile::Tile(const int &x, const int &y)
-    :type(di::Random_int::get(1,6)), hovered(false), clicked(false), swap_time_offset(0), x(x), y(y){
+    :type(di::Random_int::get(1,6)), hovered(false), clicked(false), swap_time_offset(0), number_of_tiles_x(x), number_of_tiles_y(y){
         sprite.set_animation(Animation_manager::instance()->get(std::to_string(type)+"_s.png"));
         border.setTexture(*Texture_manager::instance()->get("border.png"));
         hover_border.setTexture(*Texture_manager::instance()->get("border-hover.png"));
     }
 
     Tile::Tile(const unsigned& type, const int &x, const int &y)
-    :type(type), hovered(false), clicked(false),x(x), y(y){
+    :type(type), hovered(false), clicked(false),number_of_tiles_x(x), number_of_tiles_y(y){
         sprite.set_animation(Animation_manager::instance()->get(std::to_string(type) + "_s.png"));
         border.setTexture(*Texture_manager::instance()->get("border.png"));
         hover_border.setTexture(*Texture_manager::instance()->get("border-hover.png"));
@@ -56,7 +56,7 @@ namespace di
                         swap_time_offset %= settings_update_time;
                         if (clicked) {
                             if (Settings::instance()->get_int("first_clicked")) {
-                                if (Settings::instance()->get_int("first_x") == x && Settings::instance()->get_int("first_y") == y) {
+                                if (Settings::instance()->get_int("first_x") == number_of_tiles_x && Settings::instance()->get_int("first_y") == number_of_tiles_y) {
                                     Settings::instance()->set("first_clicked", 0);
                                     clicked = false;
                                 }
@@ -67,15 +67,15 @@ namespace di
                                 int f_x = Settings::instance()->get_int("first_x");
                                 int f_y = Settings::instance()->get_int("first_y");
 
-                                if ((abs(f_x - x) == 1 && abs(f_y - y) == 0) || (abs(f_x - x) == 0 && abs(f_y - y) == 1)) {
+                                if ((abs(f_x - number_of_tiles_x) == 1 && abs(f_y - number_of_tiles_y) == 0) || (abs(f_x - number_of_tiles_x) == 0 && abs(f_y - number_of_tiles_y) == 1)) {
                                     Settings::instance()->set("second_clicked", 1);
-                                    Settings::instance()->set("second_x", x);
-                                    Settings::instance()->set("second_y", y);
+                                    Settings::instance()->set("second_x", number_of_tiles_x);
+                                    Settings::instance()->set("second_y", number_of_tiles_y);
                                     clicked = true;
                                 }else{
                                     clicked = true;
-                                    Settings::instance()->set("first_x", x);
-                                    Settings::instance()->set("first_y", y);
+                                    Settings::instance()->set("first_x", number_of_tiles_x);
+                                    Settings::instance()->set("first_y", number_of_tiles_y);
                                     Settings::instance()->set("unclick", 1);
                                     Settings::instance()->set("unclick_x", f_x);
                                     Settings::instance()->set("unclick_y", f_y);
@@ -83,8 +83,8 @@ namespace di
                             }
                             else {
                                 Settings::instance()->set("first_clicked", 1);
-                                Settings::instance()->set("first_x", x);
-                                Settings::instance()->set("first_y", y);
+                                Settings::instance()->set("first_x", number_of_tiles_x);
+                                Settings::instance()->set("first_y", number_of_tiles_y);
                                 clicked = true;
                             }
                         }

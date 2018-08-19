@@ -29,7 +29,7 @@ namespace di
 
         std::chrono::time_point<std::chrono::steady_clock> last_frame_time;
         unsigned long long delta_time;
-        di::Fps_counter fps;
+        Fps_counter fps;
 
         sf::Text text_points;
         sf::Text text_count_points;

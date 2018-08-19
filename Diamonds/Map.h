@@ -25,7 +25,15 @@ namespace di
         void prepare_solve_animation();
         void update_swap_animation(const unsigned long long&delta_time);
         void update_solve_animation(const unsigned long long&delta_time);
-        
+
+        bool horizontal_solve = false;
+        int horizontal_x=0, horizontal_y = 0, horizontal_count=0;
+        bool vertical_solve = false;
+        int vertical_x = 0, vertical_y = 0, vertical_count = 0;
+        bool is_in_solve_animation = false;
+        bool is_in_horizontal_animation = false;
+        bool is_in_vertical_animation = false;
+        bool is_in_swap_animation = false;
 
         void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
     };

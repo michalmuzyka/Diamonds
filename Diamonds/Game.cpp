@@ -30,15 +30,15 @@ namespace di
         icon.loadFromFile("data/textures/icon.png");
         window.setIcon(64, 64, icon.getPixelsPtr());
 
-        Settings::instance()->set("update_time", 700000);
+        Settings::instance()->set("update_time", 1300000);
         Settings::instance()->set("swap_animation_offset", 2500);
         Settings::instance()->set("solve_animation_offset", 2500);
     }
 
     void Game::prepare() {
         for (int i = 1; i != 7; ++i) {
-            di::Animation_manager::instance()->get(std::to_string(i) + "_s.png")->set_sheet(di::Texture_manager::instance()->get(std::to_string(i) + "_s.png"));
-            di::Animation_manager::instance()->get(std::to_string(i) + "_s.png")->generate_frames_from_line(sf::Vector2u(100, 100));
+            Animation_manager::instance()->get(std::to_string(i) + "_s.png")->set_sheet(di::Texture_manager::instance()->get(std::to_string(i) + "_s.png"));
+            Animation_manager::instance()->get(std::to_string(i) + "_s.png")->generate_frames_from_line(sf::Vector2u(100, 100));
         }
 
         const unsigned count_of_tiles = Settings::instance()->get_int("screen_height") / 100;
