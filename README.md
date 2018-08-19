@@ -8,4 +8,5 @@ Game in a Candy-Crush type written in C++ and SFML.
 Credits:
 
 https://openclipart.org/detail/270047/gems firestorm200 -> gems
+
 https://www.dafont.com/neon-lights.font Allen R. Walden -> neon2 font
