@@ -12,14 +12,14 @@ namespace di
     class Animated_sprite : public sf::Drawable, public sf::Transformable
     {
     public:
-        explicit Animated_sprite(const unsigned long long &step_time= sf::seconds(0.2).asMicroseconds(), const bool &paused=false, const bool &looped=true);
+        explicit Animated_sprite(const unsigned long long step_time= sf::seconds(0.2).asMicroseconds(), const bool paused=false, const bool looped=true);
 
-        void update(const unsigned long long&delta_time);
+        void update(const unsigned long long delta_time);
 
         void set_animation(std::shared_ptr<Animation> animation);
-        void set_frame(const std::size_t &n);
-        void set_loop(const bool &loop);
-        void set_step_time(const unsigned long long &time);
+        void set_frame(const std::size_t n);
+        void set_loop(const bool loop);
+        void set_step_time(const unsigned long long time);
         void pause();
         void play();
 

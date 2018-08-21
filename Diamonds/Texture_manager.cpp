@@ -8,7 +8,7 @@ namespace di
        set_folder_path("data/textures/");
     }
 
-    void Texture_manager::set_folder_path(const std::string& folder_path)
+    void Texture_manager::set_folder_path(const std::string folder_path)
     {
         this->folder_path = folder_path;
 
@@ -21,7 +21,7 @@ namespace di
         return &manager;
     }
 
-    std::shared_ptr<sf::Texture> Texture_manager::get(const std::string &name)
+    std::shared_ptr<sf::Texture> Texture_manager::get(const std::string name)
     {
         if (resources.find(name) == resources.end()) {
             resources[name] = std::make_shared<sf::Texture>(sf::Texture());

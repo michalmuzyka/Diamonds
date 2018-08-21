@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <memory>
 #include <SFML/Graphics/Rect.hpp>
 
 namespace sf {
@@ -27,7 +28,7 @@ namespace di
         void generate_frames_from_line(const sf::Vector2u&);
         void set_sheet(std::shared_ptr<sf::Texture>);
         std::size_t get_animation_length() const;
-        sf::IntRect get_frame(const std::size_t &n) const;
+        sf::IntRect get_frame(const std::size_t n) const;
         std::shared_ptr<sf::Texture> get_sheet() const;
 
     private:

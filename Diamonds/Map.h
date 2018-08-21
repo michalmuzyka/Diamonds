@@ -11,7 +11,7 @@ namespace di
         Map();
 
         void init(const unsigned x, const unsigned y);
-        void update(const unsigned long long&delta_time, const sf::Vector2i& mouse_pos);
+        void update(const unsigned long long delta_time, const sf::Vector2i& mouse_pos);
     private:
         unsigned x, y;
         sf::Vector2f tile_size;
@@ -23,8 +23,8 @@ namespace di
         void make_map_without_completed_puzzle();
         void prepare_swap_animation();
         void prepare_solve_animation();
-        void update_swap_animation(const unsigned long long&delta_time);
-        void update_solve_animation(const unsigned long long&delta_time);
+        void update_swap_animation(const unsigned long long delta_time);
+        void update_solve_animation(const unsigned long long delta_time);
 
         bool horizontal_solve = false;
         int horizontal_x=0, horizontal_y = 0, horizontal_count=0;

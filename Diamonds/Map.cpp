@@ -37,8 +37,8 @@ namespace di
 
     void Map::make_map_without_completed_puzzle()
     {
-        for (int i = 0; i != y; ++i) {
-            for (int z = 0; z != x; ++z) {
+        for (unsigned i = 0; i != y; ++i) {
+            for (unsigned z = 0; z != x; ++z) {
                 //map without border
                 if (z != 0 && z != x - 1 && i != 0 && i != y - 1) {
                     bool found_completed_puzzle = false;
@@ -104,7 +104,7 @@ namespace di
                 target.draw(s);
     }
 
-    void Map::update(const unsigned long long& delta_time, const sf::Vector2i& mouse_pos) {
+    void Map::update(const unsigned long long delta_time, const sf::Vector2i& mouse_pos) {
         for (auto &m : map)
             for (auto &s : m) {
                 s.update(delta_time, mouse_pos);
@@ -160,16 +160,14 @@ namespace di
                             horizontal_count = counter;
                             return true;
                         }
-                        else {
-                            counter = 0;
-                        }
+                        counter = 0;
                         last = map[i][s].get_type();
                     }
                 }
             }
             
             //vertical check
-            for (int i = 0; i != x; ++i) {
+            for (unsigned i = 0; i != x; ++i) {
                 unsigned last = map[0][i].get_type();
                 unsigned counter = 0;
                 for (int s = 1; s != y; ++s) {
@@ -188,9 +186,7 @@ namespace di
                             vertical_count = counter;
                             return true;
                         }
-                        else {
-                            counter = 0;
-                        }
+                        counter = 0;
                         last = map[s][i].get_type();
                     }
                 }
@@ -214,14 +210,14 @@ namespace di
 
         map[f_y][f_x].change_type(&map[s_y][s_x]);
 
-        map[f_y][f_x].set_sprite_position(x_offset + s_x * 100, y_offset + s_y * 100);
-        map[s_y][s_x].set_sprite_position(x_offset + f_x * 100, y_offset + f_y * 100);
+        map[f_y][f_x].set_position(x_offset + s_x * 100, y_offset + s_y * 100);
+        map[s_y][s_x].set_position(x_offset + f_x * 100, y_offset + f_y * 100);
 
         is_in_swap_animation = true;
         Settings::instance()->set("block_input", 1);
     }
 
-    void Map::update_swap_animation(const unsigned long long& delta_time) {
+    void Map::update_swap_animation(const unsigned long long delta_time) {
         const unsigned long long swap_animation_offset = Settings::instance()->get_ull("swap_animation_offset");
         const int f_x = Settings::instance()->get_int("first_x");
         const int f_y = Settings::instance()->get_int("first_y");
@@ -284,7 +280,7 @@ namespace di
             vertical_solve = false;
         }
     }
-    void Map::update_solve_animation(const unsigned long long& delta_time) {
+    void Map::update_solve_animation(const unsigned long long delta_time) {
         const unsigned long long solve_animation_offset = Settings::instance()->get_ull("solve_animation_offset");
         if(is_in_horizontal_animation){
 

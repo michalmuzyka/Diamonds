@@ -102,41 +102,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\SFML-2.5.0\bin\openal32.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-audio-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-audio-d-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-graphics-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-graphics-d-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-network-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-network-d-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-system-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-system-d-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-window-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-    <None Include="..\..\..\SFML-2.5.0\bin\sfml-window-d-2.dll">
-      <Filter>DLL</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Font Include="data\font\default.ttf">
       <Filter>Files</Filter>
     </Font>

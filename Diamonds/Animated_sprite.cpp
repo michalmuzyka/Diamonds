@@ -4,13 +4,13 @@
 namespace di
 {
 
-    Animated_sprite::Animated_sprite(const unsigned long long& step_time, const bool& paused, const bool& looped)
+    Animated_sprite::Animated_sprite(const unsigned long long step_time, const bool paused, const bool looped)
         :animation(nullptr), texture(nullptr), frame_number(0), looped(looped), paused(paused), step_time(step_time), current_time(0), ended(0)
     {
         
     }
 
-    void Animated_sprite::update(const unsigned long long& delta_time) {
+    void Animated_sprite::update(const unsigned long long delta_time) {
         if(!paused && animation){
             current_time += delta_time;
             if(delta_time+current_time >= step_time){
@@ -68,15 +68,15 @@ namespace di
         set_frame(0);
     }
 
-    void Animated_sprite::set_frame(const std::size_t& n) {
+    void Animated_sprite::set_frame(const std::size_t n) {
         sprite.setTextureRect(animation->get_frame(n));
     }
 
-    void Animated_sprite::set_loop(const bool& loop) {
+    void Animated_sprite::set_loop(const bool loop) {
         looped = loop;
     }
 
-    void Animated_sprite::set_step_time(const unsigned long long& time) {
+    void Animated_sprite::set_step_time(const unsigned long long time) {
         step_time = time;
     }
 
@@ -84,7 +84,7 @@ namespace di
     sf::FloatRect Animated_sprite::getBounds() const {
         const auto bounds = sprite.getGlobalBounds();
         const auto pos = getPosition();
-        return sf::FloatRect(pos.x, pos.y, bounds.width, bounds.height);
+        return sf::FloatRect{ pos.x, pos.y, bounds.width, bounds.height };
     }
 
 

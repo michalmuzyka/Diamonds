@@ -25,7 +25,7 @@ namespace di
         return frames.size();
     }
 
-    sf::IntRect Animation::get_frame(const std::size_t& n) const {
+    sf::IntRect Animation::get_frame(const std::size_t n) const {
         return frames[n];
     }
 

@@ -6,7 +6,7 @@ namespace di
         
     }
 
-    std::shared_ptr<Animation> Animation_manager::get(const std::string&s) {
+    std::shared_ptr<Animation> Animation_manager::get(const std::string s) {
         if(resources.find(s)==resources.end()){
             resources[s] = std::make_shared<Animation>();
         }

@@ -11,7 +11,7 @@ namespace di
         resources["default"]->loadFromFile(folder_path+"default.ttf");
     }
 
-    void Font_manager::set_folder_path(const std::string& folder_path)
+    void Font_manager::set_folder_path(const std::string folder_path)
     {
         this->folder_path = folder_path;
 
@@ -25,7 +25,7 @@ namespace di
         return &manager;
     }
 
-    std::shared_ptr<sf::Font> Font_manager::get(const std::string &name)
+    std::shared_ptr<sf::Font> Font_manager::get(const std::string name)
     {
         if (resources.find(folder_path + name) == resources.end()) {
             resources[folder_path + name] = std::make_shared<sf::Font>(sf::Font());

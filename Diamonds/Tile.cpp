@@ -15,13 +15,6 @@ namespace di
         hover_sprite.setTexture(*Texture_manager::instance()->get("border-hover.png"));
     }
 
-    Tile::Tile(const unsigned& type, const int &x, const int &y)
-    :type(type), hovered(false), clicked(false),number_of_tiles_x(x), number_of_tiles_y(y){
-        sprite.set_animation(Animation_manager::instance()->get(std::to_string(type) + "_s.png"));
-        border.setTexture(*Texture_manager::instance()->get("border.png"));
-        hover_sprite.setTexture(*Texture_manager::instance()->get("border-hover.png"));
-    }
-
     void Tile::update(const unsigned long long& delta_time, const sf::Vector2i& mouse_pos) {
         sprite.update(delta_time);
         swap_time_offset += delta_time;
@@ -127,10 +120,6 @@ namespace di
         sprite.setPosition(x, y);
         border.setPosition(x, y);
         hover_sprite.setPosition(x, y);
-    }
-
-    void Tile::set_sprite_position(float x, float y) {
-        sprite.setPosition(x, y);
     }
 
     sf::Vector2f Tile::get_sprite_position() const {

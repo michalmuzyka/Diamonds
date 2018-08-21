@@ -14,8 +14,8 @@ namespace di
         Font_manager(const Font_manager&) = delete;
         Font_manager& operator=(const Font_manager&) = delete;
 
-        void set_folder_path(const std::string&);
-        std::shared_ptr<sf::Font> get(const std::string&);
+        void set_folder_path(const std::string);
+        std::shared_ptr<sf::Font> get(const std::string);
         std::shared_ptr<sf::Font> get_default();
         static Font_manager* instance();
     private:

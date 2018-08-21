@@ -10,10 +10,8 @@ namespace di
     {
     public:
         Tile(const int &x, const int &y);
-        explicit Tile(const unsigned &type, const int &x, const int &y);
         void update(const unsigned long long&delta_time, const sf::Vector2i& mouse_pos);
         void set_position(float x, float y);
-        void set_sprite_position(float x, float y);
         sf::Vector2f get_sprite_position() const;
         void hover(const sf::Vector2i& mouse_pos);
         void click();
