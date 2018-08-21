@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "Animation.h"
 #include "Animated_sprite.h"
 
 namespace di

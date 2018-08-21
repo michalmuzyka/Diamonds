@@ -1,7 +1,6 @@
-#include "stdafx.h"
-#include "Settings.h"
 #include <string>
 #include <iostream>
+#include "Settings.h"
 
 namespace di
 {

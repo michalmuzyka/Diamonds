@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include "Animation.h"
 #include <unordered_map>
+#include "Animation.h"
 
 namespace di
 {

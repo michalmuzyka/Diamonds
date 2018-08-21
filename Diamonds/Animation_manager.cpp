@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Animation_manager.h"
 
 namespace di

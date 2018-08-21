@@ -1,15 +1,15 @@
 #pragma once
+#include <memory>
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
-#include <memory>
 #include <SFML/Graphics/Sprite.hpp>
-#include "Animation.h"
 #include <SFML/Graphics/RenderWindow.hpp>
 
 namespace di
 {
+    class Animation;
 
-    class Animated_sprite :public sf::Drawable, public sf::Transformable
+    class Animated_sprite : public sf::Drawable, public sf::Transformable
     {
     public:
         explicit Animated_sprite(const unsigned long long &step_time= sf::seconds(0.2).asMicroseconds(), const bool &paused=false, const bool &looped=true);

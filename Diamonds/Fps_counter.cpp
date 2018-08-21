@@ -1,4 +1,5 @@
-#include "stdafx.h"
+#include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
 #include "Fps_counter.h"
 #include "Font_manager.h"
 

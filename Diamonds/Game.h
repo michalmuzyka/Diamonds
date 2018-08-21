@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Cursor.hpp>
 #include <string>
 #include "Texture_manager.h"
 #include "Settings.h"

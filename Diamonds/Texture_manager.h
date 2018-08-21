@@ -1,7 +1,6 @@
 #pragma once
 #include <unordered_map>
 #include <memory>
-#include <SFML/Graphics/Texture.hpp>
 
 namespace di
 {

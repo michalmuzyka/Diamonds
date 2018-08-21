@@ -1,11 +1,13 @@
 #pragma once
+
 #include <unordered_map>
+#include <string>
 
 namespace di
 {
     class Settings
     {
-    public:        
+    public:
         Settings(const Settings&) = delete;
         Settings& operator=(const Settings&) = delete;
 

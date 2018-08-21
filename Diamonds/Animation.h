@@ -1,6 +1,20 @@
 #pragma once
 #include <vector>
-#include <SFML/Graphics/Texture.hpp>
+#include <SFML/Graphics/Rect.hpp>
+
+namespace sf {
+    class Texture;
+
+    template<typename>
+    class Vector2;
+
+    typedef Vector2<unsigned int> Vector2u;
+
+    template<typename>
+    class Rect;
+
+    typedef Rect<int> IntRect;
+}
 
 namespace di
 {

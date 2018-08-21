@@ -1,10 +1,9 @@
-#include "stdafx.h"
+#include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Game.h"
 #include "Animation.h"
 #include "Animated_sprite.h"
-#include <SFML/Graphics.hpp>
 #include "Animation_manager.h"
-#include <iostream>
 
 namespace di
 {

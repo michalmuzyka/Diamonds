@@ -1,7 +1,7 @@
 #pragma once
-#include "Animated_sprite.h"
 #include <string>
 #include <SFML/Window/Mouse.hpp>
+#include "Animated_sprite.h"
 
 namespace di
 {

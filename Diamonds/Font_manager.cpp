@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include <SFML/Graphics/Font.hpp>
 #include "Font_manager.h"
 
 

@@ -1,10 +1,9 @@
-#include "stdafx.h"
+#include <iostream>
 #include "Tile.h"
 #include "Random_int.h"
 #include "Animation_manager.h"
 #include "Texture_manager.h"
 #include "Settings.h"
-#include <iostream>
 
 namespace di
 {

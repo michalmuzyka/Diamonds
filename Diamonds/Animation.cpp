@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include <SFML/Graphics/Texture.hpp>
 #include "Animation.h"
 
 namespace di

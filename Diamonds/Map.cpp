@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Map.h"
 #include "Settings.h"
 #include "Random_int.h"
